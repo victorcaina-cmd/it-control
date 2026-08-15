@@ -10,9 +10,9 @@ export default function Dashboard() {
 
   useEffect(() => {
     async function loadData() {
-      const { count: countEst } = await supabase.from('estacoes').select('*', { count: 'exact' });
-      const { count: countIT } = await supabase.from('instrucoes').select('*', { count: 'exact' });
-      const { count: countPen } = await supabase.from('orientacoes').select('*', { count: 'exact' }).eq('status', 'PENDENTE');
+const { count: countEst } = await supabase.from('estacoes').select('*', { count: 'exact', head: true });
+const { count: countIT } = await supabase.from('instrucoes').select('*', { count: 'exact', head: true });
+const { count: countPen } = await supabase.from('orientacoes').select('*', { count: 'exact', head: true }).eq('status', 'PENDENTE');
       
       setStats({ estacoes: countEst || 0, its: countIT || 0, pendencias: countPen || 0 });
 
